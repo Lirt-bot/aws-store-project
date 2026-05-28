@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--/*@thymesVar id="orders" type="java.util.List"*/-->
+<head>
+    <title>Mina beställningar</title>
+</head>
+<body>
+<div th:replace="~{navbar :: navbar}"></div>
+
+<h1>Mina beställningar</h1>
+
+<a href="/products">← Tillbaka till produkter</a>
+
+<div th:if="${#lists.isEmpty(orders)}">
+    <p>Du har inga beställningar än.</p>
+</div>
+
+<div th:each="order : ${orders}">
+    <hr/>
+    <p th:text="'Produkt: ' + ${order.productTitle}"></p>
+    <p th:text="'Stycke Pris: ' + ${order.productPrice} + ' $'"></p>
+    <p th:text="'Antal: ' + ${order.quantity}"></p>
+    <p th:text="'Totalt: ' + ${order.productPrice * order.quantity} + ' $'"></p>
+    <p th:text="'Datum: ' + ${#temporals.format(order.orderDate, 'yyyy-MM-dd HH:mm')}"></p>
+</div>
+</body>
+
+</html>

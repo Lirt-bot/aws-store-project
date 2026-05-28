@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="SE">
+<!--/*@thymesVar id="product" type="se.jensen.linus.awsstoreproject.model.Product"*/-->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<head>
+    <title>Produkter</title>
+</head>
+
+<body>
+<div th:replace="~{navbar :: navbar}"></div>
+<h1>Produkter</h1>
+<!--/*@thymesVar id="products" type="java.util.List"*/-->
+
+<div th:each="product : ${products}">
+    <img th:src="${product.image}" width="100"/>
+
+    <h3 th:text="${product.title}"></h3>
+
+    <p th:text="${product.price}"></p>
+
+    <a th:href="@{/products/{id}(id=${product.id})}">Se detaljer</a>
+
+    <hr/>
+
+
+</div>
+
+</body>
+
+
+</html>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<nav th:fragment="navbar">
+    <a href="/products">Produkter</a>
+    |
+    <a href="/orders">Mina beställningar</a>
+    |
+    <form th:action="@{/logout}" method="post" style="display:inline">
+        <button type="submit">Logga ut</button>
+    </form>
+</nav>
+</body>
+</html>

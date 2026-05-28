@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="SE">
+<!--/*@thymesVar id="registerDTO" type="se.jensen.linus.awsstoreproject.DTO.RegisterDTO"*/-->
+<head>
+    <title>Registrera</title>
+
+</head>
+
+<body>
+
+
+<h1>Skapa Konto</h1>
+
+<form th:action="@{/register}" th:object="${registerDTO}" method="post">
+
+    <div>
+        <label>Användarnamn</label>
+        <input type="text" th:field="*{username}"/>
+
+        <span th:if="${#fields.hasErrors('username')}"
+              th:errors="*{username}">
+
+        </span>
+    </div>
+
+    <div>
+        <label>Lösenord</label>
+        <input type="password" th:field="*{password}"/>
+        <span th:if="${#fields.hasErrors('password')}"
+              th:errors="*{password}">
+        </span>
+    </div>
+
+    <div>
+        <label>Email</label>
+        <input type="email" th:field="*{email}"/>
+        <span th:if="${#fields.hasErrors('email')}"
+              th:errors="*{email}">
+        </span>
+    </div>
+
+    <button type="submit">Skapa Konto</button>
+</form>
+
+<a href="/login">Om du redan har ett konto logga in här</a>
+
+</body>
