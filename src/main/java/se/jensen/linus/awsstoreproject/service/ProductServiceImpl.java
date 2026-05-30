@@ -12,7 +12,7 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     private final RestTemplate restTemplate;
     private static final String BASE_URL =
-            "http://yahyatesting-env.eba-sarnymwd.eu-north-1.elasticbeanstalk.com/products";
+            "http://yahyatesting-env.eba-sarnymwd.eu-north-1.elasticbeanstalk.com";
 
     @Override
     public List<Product> getAllProducts() {
