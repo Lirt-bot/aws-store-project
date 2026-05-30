@@ -19,7 +19,7 @@
 
     <h3 th:text="${product.title}"></h3>
 
-    <p th:text="${product.price}"></p>
+    <p th:text="${product.price}+ ' $'"></p>
 
     <a th:href="@{/products/{id}(id=${product.id})}">Se detaljer</a>
 

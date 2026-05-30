@@ -25,7 +25,11 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product getProductById(Integer id) {
-        return restTemplate.getForObject(BASE_URL + "/products/" + id, Product.class);
+        List<Product> products = getAllProducts();
+        return products.stream()
+                .filter(p -> p.getId().equals(id))
+                .findFirst()
+                .orElse(null);
     }
 
 }
