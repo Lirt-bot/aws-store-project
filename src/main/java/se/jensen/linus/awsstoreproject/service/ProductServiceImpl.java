@@ -17,6 +17,9 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getAllProducts() {
         Product[] products = restTemplate.getForObject(BASE_URL + "/products", Product[].class);
+        if (products == null) {
+            return List.of();
+        }
         return List.of(products);
     }
 
