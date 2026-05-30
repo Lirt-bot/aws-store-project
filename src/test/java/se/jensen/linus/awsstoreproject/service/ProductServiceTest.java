@@ -52,10 +52,13 @@ class ProductServiceTest {
     @Test
     void getProductById_shouldReturnCorrectProduct() {
         // Arrange
-        Product fakeProduct = new Product(1, "Test Produkt", 99.0, "Beskrivning", "Kategori", "bild.jpg");
+        Product[] fakeProducts = {
+                new Product(1, "Test Produkt", 99.0, "Beskrivning", "Kategori", "bild.jpg"),
+                new Product(2, "Test Produkt 2", 199.0, "Beskrivning 2", "Kategori", "bild2.jpg")
+        };
 
-        when(restTemplate.getForObject(anyString(), eq(Product.class)))
-                .thenReturn(fakeProduct);
+        when(restTemplate.getForObject(anyString(), eq(Product[].class)))
+                .thenReturn(fakeProducts);
 
         // Act
         Product result = productServiceImpl.getProductById(1);
