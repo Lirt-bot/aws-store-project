@@ -1,11 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="se">
 <head>
     <title>Logga in</title>
 </head>
 <body>
 
+
 <h1>Logga in</h1>
+<div th:if="${error}" th:text="${error}" style="color: red;">
+
+</div>
+
+<div th:if="${param.error}" style="color: red;">
+    Fel användarnamn eller lösenord!
+</div>
 
 <form th:action="@{/login}" method="post">
 
@@ -24,6 +32,7 @@
 </form>
 
 <a href="/register">Inget konto? Registrera dig här</a>
+
 
 </body>
 </html>

@@ -18,14 +18,12 @@
 
 <p th:text="${product.description}"></p>
 
-<form th:action="@{/orders/create}" method="post">
+<
+<form th:action="@{/cart/add/{id}(id=${product.id})}" method="post">
 
-    <input type="hidden" name="productId" th:value="${product.id}"/>
+    <button type="submit">Lägg i kundvagn</button>
 
-    <label>Antal</label>
-    <input type="number" name="quantity" min="1" value="1"/>
 
-    <button type="submit">Beställ</button>
 </form>
 </body>
 </html>

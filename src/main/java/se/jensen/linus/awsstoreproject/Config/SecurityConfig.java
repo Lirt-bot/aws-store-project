@@ -27,6 +27,7 @@ public class SecurityConfig {
                         .requestMatchers("/products", "/products/**").permitAll()
                         .requestMatchers("/orders/**").authenticated()
                         .requestMatchers("/h2-console/**").permitAll()
+                        .requestMatchers("/cart/**").authenticated()
                         .anyRequest().authenticated()
 
 
@@ -34,6 +35,7 @@ public class SecurityConfig {
                 .formLogin(form -> form
                         .loginPage("/login")
                         .defaultSuccessUrl("/products", true)
+                        .failureUrl("/login?error=true")
                         .permitAll()
                 )
                 .logout(logout -> logout

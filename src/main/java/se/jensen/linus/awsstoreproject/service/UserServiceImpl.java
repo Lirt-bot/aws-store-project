@@ -2,6 +2,7 @@ package se.jensen.linus.awsstoreproject.service;
 
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import se.jensen.linus.awsstoreproject.DTO.RegisterDTO;
@@ -29,7 +30,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found: " + username));
+
+                .orElseThrow(() -> new UsernameNotFoundException(
+
+                        "User not found: " + username));
 
     }
 }
