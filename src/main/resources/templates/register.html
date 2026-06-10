@@ -11,6 +11,8 @@
 
 <h1>Skapa Konto</h1>
 
+<div th:if="${error}" th:text="${error}" style="color: red;"></div>
+
 <form th:action="@{/register}" th:object="${registerDTO}" method="post">
 
     <div>

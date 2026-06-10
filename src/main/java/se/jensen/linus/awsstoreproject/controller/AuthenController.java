@@ -25,12 +25,19 @@ public class AuthenController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@Valid @ModelAttribute RegisterDTO registerDTO, BindingResult bindingResult) {
+    public String registerUser(@Valid @ModelAttribute RegisterDTO registerDTO,
+                               BindingResult bindingResult,
+                               Model model) {
         if (bindingResult.hasErrors()) {
             return "register";
         }
-        userService.registerUser(registerDTO);
-        return "redirect:/login";
+        try {
+            userService.registerUser(registerDTO);
+            return "redirect:/login";
+        } catch (RuntimeException e) {
+            model.addAttribute("error", e.getMessage());
+            return "register";
+        }
     }
 
     @GetMapping("login")
